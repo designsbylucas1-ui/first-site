@@ -293,3 +293,70 @@ body { padding-bottom: 72px; } /* room for the sticky call bar on phones */
   .flake { display: none; }
   .btn::after, .stars { animation: none; }
 }
+
+/* ---- Round 3 animations ---- */
+.temp { margin: 0 0 20px; color: var(--muted); font-size: .9rem; }
+.temp b { color: var(--text); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+#temp-out { color: var(--ice); }
+#temp-in { color: var(--fire); }
+
+.ember {
+  position: absolute !important; bottom: -10px; z-index: 0 !important; border-radius: 50%;
+  background: rgba(255, 140, 70, .8); box-shadow: 0 0 8px rgba(239, 91, 42, .8); pointer-events: none;
+  animation: rise-ember linear infinite;
+}
+@keyframes rise-ember {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(-30px); opacity: 0; }
+}
+
+/* Emoji icons bob gently, each out of step */
+.ico { display: inline-block; font-style: normal; margin-right: 8px; animation: bob 3s ease-in-out infinite; }
+.cards li:nth-child(2) .ico { animation-delay: -.6s; }
+.cards li:nth-child(3) .ico { animation-delay: -1.2s; }
+.cards li:nth-child(4) .ico { animation-delay: -1.8s; }
+.cards li:nth-child(5) .ico { animation-delay: -2.4s; }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(-6deg); } }
+
+/* Section headings draw an underline when revealed */
+h2 { position: relative; padding-bottom: 10px; }
+h2::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 3px; width: 56px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--fire), var(--ice)); transform-origin: 0 50%;
+}
+#how h2::after, #contact h2::after { left: 50%; margin-left: -28px; }
+.js-reveal h2.reveal::after { transform: scaleX(0); transition: transform .7s ease .25s; }
+.js-reveal h2.reveal.in::after { transform: scaleX(1); }
+
+/* Button ripple */
+.ripple {
+  position: absolute; border-radius: 50%; background: rgba(255,255,255,.4);
+  transform: scale(0); animation: ripple .6s ease-out forwards; pointer-events: none;
+}
+@keyframes ripple { to { transform: scale(2.4); opacity: 0; } }
+
+/* Form fields glow, FAQ answers fade open, gallery placeholders shimmer */
+.form input, .form select, .form textarea { transition: border-color .2s ease, box-shadow .2s ease; }
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--ice); box-shadow: 0 0 0 4px rgba(76, 195, 240, .18); }
+.faq details[open] p { animation: fade-open .35s ease; }
+@keyframes fade-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.faq summary { transition: color .2s ease; }
+.faq details[open] summary { color: var(--ice); }
+.ph { background: linear-gradient(100deg, transparent 30%, rgba(76,195,240,.12) 50%, transparent 70%) 0 0 / 200% 100%; animation: shimmer 2.6s linear infinite; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* Trust items stagger-pop in */
+.trust-row.in li { animation: pop-in .5s ease backwards; }
+.trust-row.in li:nth-child(2) { animation-delay: .1s; }
+.trust-row.in li:nth-child(3) { animation-delay: .2s; }
+.trust-row.in li:nth-child(4) { animation-delay: .3s; }
+@keyframes pop-in { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ember { display: none; }
+  .ico, .ph { animation: none; }
+  .js-reveal h2.reveal::after { transform: none; }
+}
+.call-pill, .sticky-call { position: relative; overflow: hidden; }
+.sticky-call { position: fixed; }

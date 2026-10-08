@@ -75,6 +75,55 @@
     });
   }
 
+  // Hero thermometer: outside -30 -> inside 21, ticking up
+  var tin = document.getElementById('temp-in');
+  if (tin) {
+    var t0 = null, from = -30, to = 21;
+    var run = function (t) {
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / 2200, 1);
+      tin.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))) + '°';
+      if (p < 1) requestAnimationFrame(run);
+    };
+    setTimeout(function () { requestAnimationFrame(run); }, 900);
+  }
+
+  // Rising embers in the hero (warm counterpart to the snow)
+  if (hero) {
+    for (var m = 0; m < 10; m++) {
+      var e = document.createElement('span');
+      e.className = 'ember';
+      e.style.left = Math.random() * 100 + '%';
+      e.style.animationDuration = 6 + Math.random() * 6 + 's';
+      e.style.animationDelay = -Math.random() * 10 + 's';
+      e.style.width = e.style.height = 2 + Math.random() * 4 + 'px';
+      hero.appendChild(e);
+    }
+  }
+
+  // Hero parallax: content drifts slightly slower than the page
+  var heroContent = hero && hero.querySelectorAll(':scope > :not(.flake):not(.ember)');
+  if (heroContent) {
+    window.addEventListener('scroll', function () {
+      var y = Math.min(window.scrollY, 600) * 0.12;
+      heroContent.forEach(function (el) { el.style.translate = '0 ' + y + 'px'; });
+    }, { passive: true });
+  }
+
+  // Click ripple on buttons
+  document.querySelectorAll('.btn, .call-pill, .sticky-call').forEach(function (b) {
+    b.addEventListener('pointerdown', function (ev) {
+      var r = b.getBoundingClientRect(), d = Math.max(r.width, r.height);
+      var rip = document.createElement('span');
+      rip.className = 'ripple';
+      rip.style.width = rip.style.height = d + 'px';
+      rip.style.left = ev.clientX - r.left - d / 2 + 'px';
+      rip.style.top = ev.clientY - r.top - d / 2 + 'px';
+      b.appendChild(rip);
+      setTimeout(function () { rip.remove(); }, 600);
+    });
+  });
+
   // Card tilt on mouse hover (desktop only)
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.cards li').forEach(function (card) {
