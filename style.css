@@ -360,3 +360,30 @@ h2::after {
 }
 .call-pill, .sticky-call { position: relative; overflow: hidden; }
 .sticky-call { position: fixed; }
+
+/* ---- Round 4: marquee + closing CTA band ---- */
+.marquee { overflow: hidden; background: var(--bg); border-block: 1px solid #243647; padding: 12px 0; }
+.marquee-track { display: flex; width: max-content; animation: scroll-left 30s linear infinite; }
+.marquee-track span { padding: 0 22px; color: var(--muted); font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.marquee-track span::after { content: "✦"; margin-left: 44px; color: var(--ice); }
+@keyframes scroll-left { to { transform: translateX(-50%); } }
+
+.cta-band { max-width: none; padding: 48px 20px; }
+.cta-card {
+  position: relative; max-width: 680px; margin: 0 auto; text-align: center; padding: 36px 20px; border-radius: 18px;
+  background: linear-gradient(135deg, #1b2f42, #172635);
+}
+.cta-card::before {
+  content: ""; position: absolute; inset: -2px; z-index: -1; border-radius: 20px;
+  background: conic-gradient(from var(--spin, 0deg), var(--fire), var(--ice), var(--fire));
+  animation: spin 6s linear infinite;
+}
+@property --spin { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes spin { to { --spin: 360deg; } }
+.cta-card h2 { padding-bottom: 0; }
+.cta-card h2::after { display: none; }
+.cta-card p { color: var(--muted); margin: 0 0 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .cta-card::before { animation: none; }
+}
