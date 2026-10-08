@@ -19,6 +19,44 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Sample viewer: "View sample" opens the concept site in an on-page overlay.
+  // Falls back to a normal link if scripts are blocked. window.__SAMPLES (base64)
+  // lets a single-file preview supply the sample HTML directly.
+  var viewer = document.getElementById('viewer');
+  if (viewer) {
+    var frame = document.getElementById('viewer-frame');
+    var openLink = document.getElementById('viewer-open');
+    var lastFocus = null;
+    var closeViewer = function () {
+      viewer.classList.remove('show');
+      document.body.style.overflow = '';
+      setTimeout(function () { viewer.hidden = true; frame.removeAttribute('srcdoc'); frame.removeAttribute('src'); }, 250);
+      if (lastFocus) lastFocus.focus();
+    };
+    document.querySelectorAll('a[data-sample]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        lastFocus = a;
+        var href = a.getAttribute('href');
+        document.getElementById('viewer-title').textContent = a.getAttribute('data-sample');
+        openLink.href = href;
+        var b64 = window.__SAMPLES && window.__SAMPLES[href];
+        if (b64) {
+          frame.removeAttribute('src');
+          frame.srcdoc = new TextDecoder().decode(Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); }));
+          openLink.hidden = true;
+        }
+        else { frame.removeAttribute('srcdoc'); frame.src = href; openLink.hidden = false; }
+        viewer.hidden = false;
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(function () { viewer.classList.add('show'); });
+        document.getElementById('viewer-close').focus();
+      });
+    });
+    document.getElementById('viewer-close').addEventListener('click', closeViewer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !viewer.hidden) closeViewer(); });
+  }
+
   if (reduce) return;
 
   // Rotating hero phrase

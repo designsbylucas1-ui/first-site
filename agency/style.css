@@ -259,3 +259,20 @@ footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size:
 @media (prefers-reduced-motion: reduce) {
   .phone, .scroll { animation: none; }
 }
+
+/* Sample viewer overlay */
+.viewer {
+  position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column;
+  background: rgba(5, 5, 12, .96); opacity: 0; transform: scale(.97); transition: opacity .25s ease, transform .25s ease;
+}
+.viewer[hidden] { display: none; }
+.viewer.show { opacity: 1; transform: none; }
+.viewer-bar { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-bottom: 1px solid #23233f; background: var(--panel); }
+.viewer-bar strong { flex: 1; font-size: .95rem; }
+.viewer-bar a { font-size: .85rem; font-weight: 600; }
+.viewer-bar button {
+  width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: #fff;
+  background: linear-gradient(135deg, var(--a), var(--c));
+}
+.viewer iframe { flex: 1; width: 100%; max-width: 520px; margin: 0 auto; border: 0; background: #fff; }
+@media (min-width: 640px) { .viewer iframe { max-width: 1100px; } }
