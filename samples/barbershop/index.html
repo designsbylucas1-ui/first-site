@@ -82,7 +82,10 @@
       <h2 class="reveal">Book a Chair</h2>
       <p class="note reveal">Walk-ins welcome. Or send a request and we'll confirm.</p>
       <!-- TODO (real client): swap mailto for a form service so requests arrive on every device. -->
-      <form class="form reveal" action="mailto:hello@example.com" method="post" enctype="text/plain">
+      <form class="form reveal" action="https://formsubmit.co/designsbylucas1@gmail.com" method="post" data-inquiry data-thanks="We got your request and will confirm your booking shortly.">
+        <input type="hidden" name="_subject" value="New booking request (Barbershop concept)">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_captcha" value="false">
         <label>Name <input type="text" name="name" autocomplete="name" required></label>
         <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
         <label>Service

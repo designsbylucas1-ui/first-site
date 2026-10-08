@@ -36,11 +36,13 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       }).then(function (r) {
-        if (!r.ok) throw new Error('bad status');
-        var ok = document.createElement('div');
-        ok.className = 'thanks'; ok.setAttribute('role', 'status');
-        ok.innerHTML = '<strong>Thanks! Got it.</strong><p>I\'ll get back to you soon about your free sample.</p>';
-        form.replaceWith(ok);
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok || j.success === false || j.success === 'false') throw new Error(j.message || 'not accepted');
+          var ok = document.createElement('div');
+          ok.className = 'thanks'; ok.setAttribute('role', 'status');
+          ok.innerHTML = '<strong>Thanks! Got it.</strong><p>I\'ll get back to you soon about your free sample.</p>';
+          form.replaceWith(ok);
+        });
       }).catch(function () {
         btn.disabled = false; btn.textContent = label;
         var err = document.createElement('p');

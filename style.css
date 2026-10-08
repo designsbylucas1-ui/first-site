@@ -387,3 +387,12 @@ h2::after {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track, .cta-card::before { animation: none; }
 }
+
+/* Inquiry form states */
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.thanks { text-align: center; padding: 22px 18px; border-radius: 16px; background: rgba(255,255,255,.06); border: 1px solid var(--ice); }
+.thanks strong { color: var(--ice); font-size: 1.1rem; }
+.thanks p { margin: 6px 0 0; color: var(--muted); }
+.form-error { margin: 0; color: #ff8a8a; font-size: .9rem; }
+.form-error a { text-decoration: underline; }
+.btn:disabled { opacity: .7; cursor: wait; }
