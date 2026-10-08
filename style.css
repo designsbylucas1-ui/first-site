@@ -134,3 +134,102 @@ footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size:
   .gallery { grid-template-columns: repeat(4, 1fr); }
   section { padding: 72px 24px; }
 }
+
+/* ---- Conversion + animation additions ---- */
+body { padding-bottom: 72px; } /* room for the sticky call bar on phones */
+
+.topbar {
+  background: var(--fire);
+  color: #fff;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 600;
+  padding: 8px 12px;
+}
+.topbar a { color: #fff; text-decoration: underline; }
+
+.nav { display: none; gap: 20px; font-size: .9rem; }
+.nav a { color: var(--muted); }
+.nav a:hover { color: var(--text); }
+
+.fire { color: var(--fire); }
+.ice { color: var(--ice); }
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.micro { color: var(--muted); font-size: .82rem; margin: 10px 0 0; }
+
+/* Hero entrance */
+.fade-in { opacity: 0; transform: translateY(14px); animation: rise .7s ease forwards; }
+.fade-in.d1 { animation-delay: .1s; }
+.fade-in.d2 { animation-delay: .2s; }
+.fade-in.d3 { animation-delay: .3s; }
+.fade-in.d4 { animation-delay: .4s; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+
+/* Gentle pulse on the main call button */
+.btn.pulse { animation: pulse 2.4s ease-out infinite; }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 91, 42, .55); }
+  70%, 100% { box-shadow: 0 0 0 16px rgba(239, 91, 42, 0); }
+}
+.btn { transition: transform .15s ease, filter .15s ease; }
+.btn:hover { filter: brightness(1.1); }
+
+/* Scroll reveal (only active when script.js adds .js-reveal) */
+.js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.js-reveal .reveal.in { opacity: 1; transform: none; }
+
+.cards li { transition: transform .2s ease, box-shadow .2s ease; }
+.cards li:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0, 0, 0, .3); }
+.cards li a { display: inline-block; margin-top: 8px; font-weight: 600; font-size: .9rem; }
+
+/* Trust strip */
+.trust { padding: 0 20px; max-width: none; background: var(--panel); border-block: 1px solid #243647; }
+.trust-row {
+  list-style: none; margin: 0 auto; padding: 14px 0; max-width: 720px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px;
+  font-size: .85rem; font-weight: 600; text-align: center;
+}
+.trust-row li::before { content: "✓ "; color: var(--ice); }
+
+/* Steps */
+.steps { list-style: none; margin: 0 auto 24px; padding: 0; display: grid; gap: 12px; }
+.steps li { display: flex; gap: 14px; background: var(--bg); border-radius: 12px; padding: 16px; }
+.steps b {
+  flex: none; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--fire); color: #fff;
+}
+.steps p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+#how { text-align: center; }
+#how .steps { text-align: left; }
+
+/* Reviews rating line */
+.rating { margin: -8px 0 16px; color: var(--muted); }
+.stars { color: #f5b301; letter-spacing: 2px; }
+
+/* FAQ */
+.faq details { background: var(--panel); border-radius: 12px; margin-bottom: 10px; padding: 0 16px; }
+.faq summary { cursor: pointer; font-weight: 600; padding: 14px 0; min-height: 48px; }
+.faq p { margin: 0 0 14px; color: var(--muted); }
+
+/* Sticky mobile call bar */
+.sticky-call {
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 20;
+  background: var(--fire); color: #fff; text-align: center; font-weight: 700;
+  padding: 14px; border-radius: 999px; box-shadow: 0 6px 20px rgba(0, 0, 0, .45);
+}
+
+@media (min-width: 640px) {
+  .nav { display: flex; }
+  .trust-row { grid-template-columns: repeat(4, 1fr); }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .steps li { flex-direction: column; }
+  body { padding-bottom: 0; }
+  .sticky-call { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { animation: none; opacity: 1; transform: none; }
+  .btn.pulse { animation: none; }
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
