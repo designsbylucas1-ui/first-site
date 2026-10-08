@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concept: Sharp Cuts Barbershop</title>
+  <meta name="description" content="Concept sample: classic cuts, fades and hot-towel shaves.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%82%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="sample-ribbon">Concept sample by <a href="../../agency/">Designs by Lucas</a> · not a real business</div>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top">SHARP<span>CUTS</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#barbers">Barbers</a>
+      <a href="#hours">Hours</a>
+      <a href="#book">Book</a>
+    </nav>
+    <a class="pill" href="#book">Book now</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="pole" aria-hidden="true"></div>
+      <p class="eyebrow fade-in">Est. 2015 · Downtown</p>
+      <h1 class="fade-in d1">Look sharp.<br><span class="gold" id="rot">Feel sharper.</span></h1>
+      <p class="lead fade-in d2">Classic cuts, clean fades and hot-towel shaves from barbers who care about the details.</p>
+      <div class="cta fade-in d3">
+        <a class="btn pulse" href="#book">Book a Chair</a>
+        <a class="btn ghost" href="#services">See Services</a>
+      </div>
+      <p class="status fade-in d4"><span class="dot" id="dot"></span><span id="open-text">Walk-ins welcome</span></p>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Fades</span><span>Classic Cuts</span><span>Hot Towel Shaves</span><span>Beard Trims</span><span>Line-Ups</span><span>Kids Cuts</span><span>Fades</span><span>Classic Cuts</span><span>Hot Towel Shaves</span><span>Beard Trims</span><span>Line-Ups</span><span>Kids Cuts</span></div></div>
+
+    <section id="services">
+      <h2 class="reveal">Services</h2>
+      <ul class="menu">
+        <li class="reveal"><div><span><i class="ico" aria-hidden="true">✂️</i>Classic Haircut</span><p>Scissor or clipper cut, finished with a neck shave.</p></div><b>$30</b></li>
+        <li class="reveal"><div><span><i class="ico" aria-hidden="true">💈</i>Skin Fade</span><p>Tight, seamless fade blended to your style.</p></div><b>$35</b></li>
+        <li class="reveal"><div><span><i class="ico" aria-hidden="true">🪒</i>Hot Towel Shave</span><p>Straight-razor shave with warm towels and oils.</p></div><b>$28</b></li>
+        <li class="reveal"><div><span><i class="ico" aria-hidden="true">🧔</i>Beard Trim</span><p>Shaped, lined up and conditioned.</p></div><b>$18</b></li>
+        <li class="reveal feature"><div><span><i class="ico" aria-hidden="true">⭐</i>Cut + Beard</span><p>The full treatment. Our most popular combo.</p></div><b>$45</b></li>
+      </ul>
+      <p class="note reveal">Sample prices for this concept.</p>
+    </section>
+
+    <section id="barbers" class="alt">
+      <h2 class="reveal">The Barbers</h2>
+      <!-- TODO (real client): replace with real barber names, photos and bios. -->
+      <div class="team">
+        <div class="reveal"><div class="avatar">A</div><strong>Barber Name</strong><p>Fades &amp; skin work</p></div>
+        <div class="reveal"><div class="avatar">B</div><strong>Barber Name</strong><p>Classic cuts &amp; shaves</p></div>
+        <div class="reveal"><div class="avatar">C</div><strong>Barber Name</strong><p>Beards &amp; line-ups</p></div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2 class="reveal">The Work</h2>
+      <!-- TODO (real client): add real photos of cuts and the shop. -->
+      <div class="gallery">
+        <div class="ph reveal">Photo</div><div class="ph reveal">Photo</div><div class="ph reveal">Photo</div><div class="ph reveal">Photo</div><div class="ph reveal">Photo</div><div class="ph reveal">Photo</div>
+      </div>
+    </section>
+
+    <section id="hours" class="alt">
+      <h2 class="reveal">Hours</h2>
+      <dl class="hours reveal">
+        <div data-days="1,2,3,4,5"><dt>Mon – Fri</dt><dd>9am – 7pm</dd></div>
+        <div data-days="6"><dt>Saturday</dt><dd>8am – 5pm</dd></div>
+        <div data-days="0"><dt>Sunday</dt><dd>Closed</dd></div>
+      </dl>
+    </section>
+
+    <section id="book">
+      <h2 class="reveal">Book a Chair</h2>
+      <p class="note reveal">Walk-ins welcome. Or send a request and we'll confirm.</p>
+      <!-- TODO (real client): swap mailto for a form service so requests arrive on every device. -->
+      <form class="form reveal" action="https://api.web3forms.com/submit" method="post" data-inquiry data-email="designsbylucas1@gmail.com" data-thanks="We got your request and will confirm your booking shortly.">
+        <input type="hidden" name="access_key" value="d33f40a4-aea6-4092-a17c-defc3d2beab8">
+        <input type="hidden" name="subject" value="New booking request (Barbershop concept)">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>Name <input type="text" name="name" autocomplete="name" required></label>
+        <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
+        <label>Service
+          <select name="service"><option>Classic Haircut</option><option>Skin Fade</option><option>Hot Towel Shave</option><option>Beard Trim</option><option>Cut + Beard</option></select>
+        </label>
+        <label>Preferred day &amp; time <input type="text" name="when" placeholder="e.g. Saturday morning"></label>
+        <button class="btn" type="submit">Request Booking</button>
+      </form>
+      <p class="note reveal">123 Main Street · (555) 555-0123</p>
+    </section>
+  </main>
+
+  <footer>© 2026 Sharp Cuts Barbershop (concept)</footer>
+  <a class="sticky-call" href="#book">✂ Book now</a>
+</body>
+</html>
