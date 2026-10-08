@@ -223,3 +223,39 @@ footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size:
 }
 .mini input:focus { outline: none; border-color: var(--b); box-shadow: 0 0 0 4px rgba(34,211,238,.18); }
 .mini .btn { margin: 4px 0 0; width: 100%; }
+
+/* Phone mockup */
+.phone-sec { display: grid; gap: 28px; align-items: center; }
+.phone-wrap { display: grid; place-items: center; }
+.phone {
+  position: relative; width: 190px; height: 380px; padding: 10px; border-radius: 34px;
+  background: linear-gradient(160deg, #2b2b4a, #12121f); border: 2px solid #3a3a63;
+  box-shadow: 0 24px 60px rgba(124,92,255,.35); animation: phone-float 5s ease-in-out infinite;
+}
+@keyframes phone-float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+.notch { position: absolute; top: 14px; left: 50%; width: 56px; height: 10px; margin-left: -28px; border-radius: 8px; background: #0b0b14; z-index: 2; }
+.screen { height: 100%; border-radius: 24px; overflow: hidden; background: #0f1a24; }
+.scroll { display: grid; gap: 8px; padding: 26px 8px 8px; animation: phone-scroll 9s ease-in-out infinite; }
+@keyframes phone-scroll { 0%,8% { transform: translateY(0); } 45%,55% { transform: translateY(-190px); } 92%,100% { transform: translateY(0); } }
+.m-hero { display: grid; gap: 6px; padding: 14px 10px; border-radius: 12px; background: linear-gradient(135deg, rgba(239,91,42,.5), rgba(76,195,240,.4)); }
+.m-hero.alt2 { background: linear-gradient(135deg, rgba(124,92,255,.55), rgba(255,92,138,.4)); }
+.m-hero i { width: 40%; height: 5px; border-radius: 3px; background: rgba(255,255,255,.5); }
+.m-hero b { height: 10px; border-radius: 4px; background: #fff; }
+.m-hero b.s { width: 70%; height: 6px; opacity: .6; }
+.m-hero u { height: 22px; border-radius: 12px; background: #ef5b2a; margin-top: 4px; }
+.m-card { height: 46px; border-radius: 10px; background: #172635; position: relative; }
+.m-card::before { content: ""; position: absolute; left: 10px; top: 12px; width: 55%; height: 7px; border-radius: 3px; background: #4a6178; box-shadow: 0 14px 0 -1px #2c3f52; }
+.phone-copy p { color: var(--muted); }
+.phone-copy .btn { margin-left: 0; }
+
+.foot-links { display: flex; justify-content: center; gap: 18px; margin-bottom: 10px; }
+.foot-links a { color: var(--muted); }
+.foot-links a:hover { color: var(--text); }
+.work a { font-weight: 600; font-size: .9rem; }
+
+@media (min-width: 640px) {
+  .phone-sec { grid-template-columns: auto 1fr; gap: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone, .scroll { animation: none; }
+}
