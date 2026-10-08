@@ -73,6 +73,19 @@
       el.style.transitionDelay = (n % 3) * 80 + 'ms';
       io.observe(el);
     });
+
+    // Failsafe: some preview windows never fire the observer, which would leave
+    // sections blank. This also reveals anything in view on scroll and on a timer.
+    var sweep = function () {
+      var vh = window.innerHeight || 800;
+      document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (vh < 100 || (r.top < vh && r.bottom > 0)) el.classList.add('in');
+      });
+    };
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    setInterval(sweep, 700);
   }
 
   // Hero thermometer: outside -30 -> inside 21, ticking up

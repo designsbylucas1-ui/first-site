@@ -10,7 +10,11 @@
   function onScroll() {
     var max = root.scrollHeight - window.innerHeight;
     if (bar && max > 0) bar.style.transform = 'scaleX(' + Math.min(window.scrollY / max, 1) + ')';
-    if (sticky) sticky.classList.toggle('show', window.scrollY > 380);
+    if (sticky) {
+      var c = document.getElementById('contact'), atForm = false;
+      if (c) { var r = c.getBoundingClientRect(); atForm = r.top < window.innerHeight * 0.7; }
+      sticky.classList.toggle('show', window.scrollY > 380 && !atForm);
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -60,6 +64,19 @@
       el.style.transitionDelay = (n % 3) * 80 + 'ms';
       io.observe(el);
     });
+
+    // Failsafe: some preview windows never fire the observer, which would leave
+    // sections blank. This also reveals anything in view on scroll and on a timer.
+    var sweep = function () {
+      var vh = window.innerHeight || 800;
+      document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (vh < 100 || (r.top < vh && r.bottom > 0)) el.classList.add('in');
+      });
+    };
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    setInterval(sweep, 700);
   }
 
   // Click ripple on buttons

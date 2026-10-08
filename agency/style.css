@@ -213,3 +213,13 @@ footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size:
   .orb { display: none; }
   * { transition: none !important; }
 }
+
+/* Quick inquiry form in the hero */
+.mini { max-width: 380px; margin: 28px auto 0; display: grid; gap: 10px; text-align: left; padding: 18px; border-radius: 16px; background: rgba(20,20,42,.8); border: 1px solid #2c2c52; }
+.mini-title { margin: 0; font-weight: 700; color: var(--b); }
+.mini input {
+  width: 100%; font: inherit; font-size: 16px; color: var(--text); background: var(--bg);
+  border: 1px solid #2c2c52; border-radius: 8px; padding: 12px; min-height: 48px;
+}
+.mini input:focus { outline: none; border-color: var(--b); box-shadow: 0 0 0 4px rgba(34,211,238,.18); }
+.mini .btn { margin: 4px 0 0; width: 100%; }
