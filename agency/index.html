@@ -36,13 +36,13 @@
         <a class="btn ghost" href="#work">See My Work</a>
       </div>
       <p class="micro fade-in d4">I'll build a sample of your site before you pay anything.</p>
-      <form class="mini fade-in d4" action="https://api.web3forms.com/submit" method="post" data-inquiry data-email="designsbylucas1@gmail.com">
+      <form class="mini fade-in d4" novalidate data-contact="phone" action="https://api.web3forms.com/submit" method="post" data-inquiry data-email="designsbylucas1@gmail.com">
         <input type="hidden" name="access_key" value="d33f40a4-aea6-4092-a17c-defc3d2beab8">
         <input type="hidden" name="subject" value="New website inquiry (quick form)">
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="mini-title">Quick inquiry</p>
-        <input type="text" name="name" placeholder="Your name" autocomplete="name" required aria-label="Your name">
-        <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required aria-label="Phone number">
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" aria-label="Your name">
+        <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" aria-label="Phone number">
         <input type="text" name="business" placeholder="Business name / type" aria-label="Business name or type">
         <button class="btn" type="submit">Request My Free Sample</button>
       </form>
@@ -138,13 +138,13 @@
     <section id="contact" class="alt">
       <h2 class="reveal">Get your free sample</h2>
       <p class="note reveal">Tell me a bit about your business and I'll get back to you.</p>
-      <form class="form reveal" action="https://api.web3forms.com/submit" method="post" data-inquiry data-email="designsbylucas1@gmail.com">
+      <form class="form reveal" novalidate data-contact="phone,email" action="https://api.web3forms.com/submit" method="post" data-inquiry data-email="designsbylucas1@gmail.com">
         <input type="hidden" name="access_key" value="d33f40a4-aea6-4092-a17c-defc3d2beab8">
         <input type="hidden" name="subject" value="New website inquiry (full form)">
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label>Your name <input type="text" name="name" autocomplete="name" required></label>
+        <label>Your name <input type="text" name="name" autocomplete="name"></label>
         <label>Business name <input type="text" name="business"></label>
-        <label>Phone <input type="tel" name="phone" autocomplete="tel" required></label>
+        <label>Phone <input type="tel" name="phone" autocomplete="tel"></label>
         <label>Email <input type="email" name="email" autocomplete="email"></label>
         <label>What kind of business?
           <select name="type">

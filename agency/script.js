@@ -19,16 +19,49 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Inquiry forms: send through Web3Forms without leaving the page. If the request
-  // fails, the visitor sees a direct email link instead of losing their message.
+  // Inquiry forms: send through Web3Forms without leaving the page. Problems are shown
+  // on the page itself (some viewers hide the browser's own warnings), and a failed send
+  // gives the visitor a direct email link instead of losing their message.
   document.querySelectorAll('form[data-inquiry]').forEach(function (form) {
     var to = form.getAttribute('data-email');
+    function show(msg, html) {
+      var old = form.querySelector('.form-error'); if (old) old.remove();
+      var err = document.createElement('p');
+      err.className = 'form-error'; err.setAttribute('role', 'alert');
+      if (html) err.innerHTML = msg; else err.textContent = msg;
+      form.appendChild(err);
+      err.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var old = form.querySelector('.form-error'); if (old) old.remove();
+      form.querySelectorAll('.invalid').forEach(function (f) { f.classList.remove('invalid'); });
+
+      // Validate: a name, plus at least one way to reach them
+      var val = function (n) { var f = form.querySelector('[name="' + n + '"]'); return f ? f.value.trim() : ''; };
+      var contacts = (form.getAttribute('data-contact') || 'phone').split(',');
+      var bad = [];
+      if (!val('name')) bad.push('name');
+      if (!contacts.some(function (c) { return val(c); })) contacts.forEach(function (c) { bad.push(c); });
+      var email = form.querySelector('[name="email"]');
+      if (email && email.value.trim() && !email.validity.valid) bad.push('email');
+      if (bad.length) {
+        bad.forEach(function (n) { var f = form.querySelector('[name="' + n + '"]'); if (f) f.classList.add('invalid'); });
+        var first = form.querySelector('.invalid'); if (first) first.focus();
+        var needName = !val('name');
+        var needContact = !contacts.some(function (c) { return val(c); });
+        var what = contacts.length > 1 ? 'a phone number or email' : 'a phone number';
+        var msg = needName && needContact ? 'Please enter your name and ' + what + '.'
+          : needName ? 'Please enter your name.'
+          : needContact ? 'Please enter ' + what + '.'
+          : 'That email address does not look right.';
+        show(msg);
+        return;
+      }
+
       var btn = form.querySelector('button[type="submit"]');
       var label = btn.textContent;
       btn.disabled = true; btn.textContent = 'Sending...';
-      var old = form.querySelector('.form-error'); if (old) old.remove();
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = v; });
       fetch(form.getAttribute('action'), {
@@ -42,13 +75,11 @@
           ok.className = 'thanks'; ok.setAttribute('role', 'status');
           ok.innerHTML = '<strong>Thanks! Got it.</strong><p>I\'ll get back to you soon about your free sample.</p>';
           form.replaceWith(ok);
+          ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
         });
       }).catch(function () {
         btn.disabled = false; btn.textContent = label;
-        var err = document.createElement('p');
-        err.className = 'form-error'; err.setAttribute('role', 'alert');
-        err.innerHTML = 'Sorry, that did not send. Please email <a href="mailto:' + to + '">' + to + '</a> instead.';
-        form.appendChild(err);
+        show('Sorry, that did not send. Please email <a href="mailto:' + to + '">' + to + '</a> instead.', true);
       });
     });
   });
