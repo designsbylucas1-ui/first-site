@@ -19,10 +19,10 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Inquiry forms: send through FormSubmit without leaving the page. If the request
+  // Inquiry forms: send through Web3Forms without leaving the page. If the request
   // fails, the visitor sees a direct email link instead of losing their message.
   document.querySelectorAll('form[data-inquiry]').forEach(function (form) {
-    var to = form.getAttribute('action').split('formsubmit.co/')[1];
+    var to = form.getAttribute('data-email');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
@@ -31,13 +31,13 @@
       var old = form.querySelector('.form-error'); if (old) old.remove();
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = v; });
-      fetch('https://formsubmit.co/ajax/' + to, {
+      fetch(form.getAttribute('action'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       }).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
-          if (!r.ok || j.success === false || j.success === 'false') throw new Error(j.message || 'not accepted');
+          if (!r.ok || !(j.success === true || j.success === 'true')) throw new Error(j.message || 'not accepted');
           var ok = document.createElement('div');
           ok.className = 'thanks'; ok.setAttribute('role', 'status');
           ok.innerHTML = '<strong>Thanks! Got it.</strong><p>I\'ll get back to you soon about your free sample.</p>';
