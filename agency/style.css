@@ -276,3 +276,12 @@ footer { text-align: center; padding: 24px 16px; color: var(--muted); font-size:
 }
 .viewer iframe { flex: 1; width: 100%; max-width: 520px; margin: 0 auto; border: 0; background: #fff; }
 @media (min-width: 640px) { .viewer iframe { max-width: 1100px; } }
+
+/* Inquiry form states */
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.thanks { text-align: center; padding: 22px 18px; border-radius: 16px; background: rgba(34,211,238,.1); border: 1px solid var(--b); animation: fade-open .4s ease; }
+.thanks strong { color: var(--b); font-size: 1.1rem; }
+.thanks p { margin: 6px 0 0; color: var(--muted); }
+.form-error { margin: 0; color: #ff8aa6; font-size: .9rem; }
+.form-error a { text-decoration: underline; }
+.btn:disabled { opacity: .7; cursor: wait; }

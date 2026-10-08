@@ -19,6 +19,38 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Inquiry forms: send through FormSubmit without leaving the page. If the request
+  // fails, the visitor sees a direct email link instead of losing their message.
+  document.querySelectorAll('form[data-inquiry]').forEach(function (form) {
+    var to = form.getAttribute('action').split('formsubmit.co/')[1];
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...';
+      var old = form.querySelector('.form-error'); if (old) old.remove();
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+      fetch('https://formsubmit.co/ajax/' + to, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad status');
+        var ok = document.createElement('div');
+        ok.className = 'thanks'; ok.setAttribute('role', 'status');
+        ok.innerHTML = '<strong>Thanks! Got it.</strong><p>I\'ll get back to you soon about your free sample.</p>';
+        form.replaceWith(ok);
+      }).catch(function () {
+        btn.disabled = false; btn.textContent = label;
+        var err = document.createElement('p');
+        err.className = 'form-error'; err.setAttribute('role', 'alert');
+        err.innerHTML = 'Sorry, that did not send. Please email <a href="mailto:' + to + '">' + to + '</a> instead.';
+        form.appendChild(err);
+      });
+    });
+  });
+
   // Sample viewer: "View sample" opens the concept site in an on-page overlay.
   // Falls back to a normal link if scripts are blocked. window.__SAMPLES (base64)
   // lets a single-file preview supply the sample HTML directly.
