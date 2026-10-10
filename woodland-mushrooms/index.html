@@ -155,10 +155,24 @@
       <h2>Order for pickup</h2>
       <p>Pickup is available at the farm and at the farmers market. Email, call or text and we'll get your order ready.</p>
       <div class="cta">
-        <!-- TODO: replace with the real phone number and email -->
+        <!-- TODO: replace with the real phone number, email and Instagram handle -->
         <a class="btn" href="tel:+10000000000">Call or text</a>
         <a class="btn btn-ghost" href="mailto:hello@example.com">Email us</a>
+        <a class="btn btn-ghost" href="https://instagram.com/woodlandmushrooms" target="_blank" rel="noopener">Instagram</a>
       </div>
+      <!-- TODO: get a free access key at web3forms.com (use your friend's email) and paste it below -->
+      <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New inquiry from woodlandmushrooms.com">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row">
+          <label>Name<input name="name" autocomplete="name" required></label>
+          <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label>Email<input name="email" type="email" autocomplete="email"></label>
+        <label>What would you like?<textarea name="message" rows="4" placeholder="e.g. 2 lb mixed oyster for Saturday pickup, or a lion's mane tincture"></textarea></label>
+        <button class="btn" type="submit">Send message</button>
+      </form>
       <p class="small">Serving Edmonton, Sherwood Park &amp; area</p>
     </div>
   </section>
@@ -166,7 +180,7 @@
 
 <footer>
   <span>© <span id="yr"></span> Woodland Mushrooms · Sherwood Park, Alberta</span>
-  <a href="#top">Back to top ↑</a>
+  <span><a href="https://instagram.com/woodlandmushrooms" target="_blank" rel="noopener">Instagram</a> · <a href="#top">Back to top ↑</a></span>
 </footer>
 
 <script src="script.js"></script>
