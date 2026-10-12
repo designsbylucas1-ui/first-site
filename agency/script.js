@@ -45,6 +45,8 @@
       if (!contacts.some(function (c) { return val(c); })) contacts.forEach(function (c) { bad.push(c); });
       var email = form.querySelector('[name="email"]');
       if (email && email.value.trim() && !email.validity.valid) bad.push('email');
+      var link = form.querySelector('[name="link"]');
+      if (link && link.value.trim() && !link.validity.valid) bad.push('link');
       if (bad.length) {
         bad.forEach(function (n) { var f = form.querySelector('[name="' + n + '"]'); if (f) f.classList.add('invalid'); });
         var first = form.querySelector('.invalid'); if (first) first.focus();
@@ -54,7 +56,8 @@
         var msg = needName && needContact ? 'Please enter your name and ' + what + '.'
           : needName ? 'Please enter your name.'
           : needContact ? 'Please enter ' + what + '.'
-          : 'That email address does not look right.';
+          : bad.indexOf('email') > -1 ? 'That email address does not look right.'
+          : 'That link does not look right. Start it with https://';
         show(msg);
         return;
       }
