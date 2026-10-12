@@ -198,3 +198,14 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);box-s
 @keyframes twinkle{50%{text-shadow:0 0 14px rgba(232,184,74,.7)}}
 .sticky-call{animation:nudge 3s ease-in-out infinite}
 @keyframes nudge{0%,88%,100%{transform:none}92%{transform:translateY(-4px)}96%{transform:none}}
+
+.consent{font-size:.78rem;color:var(--mute);text-align:center}
+.consent a,.legal a{text-decoration:underline}
+.consent a:hover{color:var(--gold)}
+.policy{max-width:760px;margin:0 auto;padding:60px 20px 80px}
+.policy h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 6px}
+.policy h2{font-size:1.15rem;margin:32px 0 8px;color:var(--gold)}
+.policy p,.policy li{color:#d6d2c6;margin-bottom:10px}
+.policy ul{padding-left:22px}
+.policy a{color:var(--gold);text-decoration:underline}
+.policy .updated{color:var(--mute);font-size:.9rem}
