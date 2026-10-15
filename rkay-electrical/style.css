@@ -47,6 +47,10 @@ h3{font-size:1.4rem;margin:0 0 .3em;font-weight:700}
 .card{background:#fff;padding:26px;border-radius:var(--r);border-top:4px solid var(--gold);box-shadow:0 4px 14px #0001}
 .card p{margin:0;color:var(--muted)}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:36px 0 10px}
+.ph{display:grid;place-items:center;background:repeating-linear-gradient(45deg,#e6dcc3,#e6dcc3 12px,#eee5ce 12px,#eee5ce 24px);color:#8a7b57;font:700 1rem "Barlow Condensed";letter-spacing:.14em;text-transform:uppercase;border-radius:8px;border:2px dashed #c9b98d}
+.shot.ph{aspect-ratio:4/3}
+.gal .ph{aspect-ratio:1}
+.feat .ph{aspect-ratio:4/3}
 .gal img{aspect-ratio:1;object-fit:cover;width:100%;border-radius:8px}
 .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
 .feat img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
