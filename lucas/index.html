@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design by Lucas | Websites, bookings, automation &amp; AI</title>
+  <meta name="description" content="Websites, online booking and automation for small businesses in Sherwood Park and Edmonton. Built to look good, made to work harder.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Design by Lucas">
+      <small>DESIGN BY</small><b>Lucas</b>
+    </a>
+    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    <nav id="menu" class="menu" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#what">What I do</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="menu-cta" href="#contact">Book a call</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="label">Design</p>
+      <h1>Your business.<br>Upgraded.</h1>
+      <p class="sub">Websites, bookings, automation &amp; AI.<br>Built to look good. Made to work harder.</p>
+
+      <div class="stack" aria-hidden="true">
+        <div class="card salon">
+          <div class="salon-nav"><span>STUDIO / SOLA</span><em>Book</em></div>
+          <h3>Good hair.<br>Better energy.</h3>
+          <p>Modern hair for modern humans.</p>
+          <span class="pill-dark">Book a chair →</span>
+        </div>
+        <div class="card cal">
+          <h4>Book an appointment</h4>
+          <div class="cal-head"><span>‹</span><b>October 2026</b><span>›</span></div>
+          <div class="cal-grid" id="cal"></div>
+          <div class="slots"><span>09:00</span><span>10:30</span><span>12:00</span><span>13:30</span><span class="off">15:00</span><span>16:30</span></div>
+        </div>
+        <span class="tag">Built by Lucas</span>
+        <div class="card flow">
+          <h4>Automated workflow <span class="live"><i></i>LIVE</span></h4>
+          <ol>
+            <li><i>📅</i><b>New booking</b><small>Customer books online</small></li>
+            <li><i>✉️</i><b>Confirmation</b><small>Email &amp; calendar invite</small></li>
+            <li><i>✦</i><b>Follow-up</b><small>Reminder + thank-you</small></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div><span>WEBSITES</span><span>BOOKINGS</span><span>AUTOMATION</span><span>AI</span><span>SYSTEMS</span><span>WEBSITES</span><span>BOOKINGS</span><span>AUTOMATION</span><span>AI</span><span>SYSTEMS</span></div>
+    </div>
+
+    <section class="work" id="work">
+      <p class="label">Work</p>
+      <h2>Small business.<br>Big main-character energy.</h2>
+
+      <p class="label sm">Concept projects</p>
+      <!-- Each card links to a sample already in this repo -->
+      <a class="proj" href="../samples/barbershop/index.html">
+        <div class="shot s-barber"><b>FADE &amp; CO.</b><h3>Sharp cuts.<br>Zero wait.</h3><span class="pill-lime">Book a cut →</span></div>
+        <div class="proj-meta"><h3>Barbershop</h3><span>→</span></div><p>Website / Booking</p>
+      </a>
+      <a class="proj" href="../samples/hvac/index.html">
+        <div class="shot s-hvac"><b>OTTO HEATING &amp; COOLING</b><h3>Heat when it's -30.<br>Cool when it's not.</h3><span class="pill-lime">Call now →</span></div>
+        <div class="proj-meta"><h3>Otto Heating &amp; Cooling</h3><span>→</span></div><p>Website / Quotes</p>
+      </a>
+      <a class="proj" href="../woodland-mushrooms/index.html">
+        <div class="shot s-wood"><b>WOODLAND MUSHROOMS</b><h3>Grown slow.<br>Picked fresh.</h3><span class="pill-lime">Get in touch →</span></div>
+        <div class="proj-meta"><h3>Woodland Mushrooms</h3><span>→</span></div><p>Website / Contact form</p>
+      </a>
+    </section>
+
+    <section class="what" id="what">
+      <p class="label">What I do</p>
+      <ul>
+        <li><span>01</span><div><h3>Websites</h3><p>Fast, mobile-first and built to be found on Google.</p></div></li>
+        <li><span>02</span><div><h3>Online booking</h3><p>Live availability, confirmations and reminders that send themselves.</p></div></li>
+        <li><span>03</span><div><h3>Automation</h3><p>Enquiry comes in, follow-up goes out. No more copy-pasting between apps.</p></div></li>
+        <li><span>04</span><div><h3>AI helpers</h3><p>Answer common questions, sort enquiries and draft replies while you work.</p></div></li>
+      </ul>
+    </section>
+
+    <section class="about" id="about">
+      <p class="label">About</p>
+      <h2>One person.<br>No middlemen.</h2>
+      <p>I'm Lucas, a web designer based in Sherwood Park, serving Edmonton and area. You talk to me, I build it, and I tell you honestly what will and won't help your business.</p>
+      <ul class="facts">
+        <li><b>Flat</b> pricing, quoted upfront</li>
+        <li><b>Phone-first</b> design</li>
+        <li><b>You own</b> your site</li>
+      </ul>
+    </section>
+
+    <section class="cta" id="contact">
+      <span class="spark" aria-hidden="true"></span>
+      <h2>Let's build<br>something cool.</h2>
+      <p>Tell me what's slowing your business down. I'll tell you, honestly, how I'd fix it.</p>
+      <form class="form" novalidate action="https://api.web3forms.com/submit" method="post">
+        <input type="hidden" name="access_key" value="d33f40a4-aea6-4092-a17c-defc3d2beab8">
+        <input type="hidden" name="subject" value="New enquiry from Design by Lucas">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <label>Name <input name="name" autocomplete="name"></label>
+        <label>Email <input type="email" name="email" autocomplete="email"></label>
+        <label>Phone <input type="tel" name="phone" autocomplete="tel"></label>
+        <label>What do you need? <textarea name="message" rows="3"></textarea></label>
+        <button class="btn-dark" type="submit">Start a project →</button>
+        <p class="status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="direct"><a href="mailto:designsbylucas1@gmail.com">designsbylucas1@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="logo"><small>DESIGN BY</small><b>Lucas</b></div>
+    <nav><a href="#work">Work</a><a href="#what">What I do</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <p>© 2026 Design by Lucas · Sherwood Park &amp; Edmonton</p>
+  </footer>
+</body>
+</html>
