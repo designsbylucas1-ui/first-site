@@ -7,7 +7,7 @@
   <meta name="description" content="Websites, online booking and automation for small businesses in Sherwood Park and Edmonton. Built to look good, made to work harder.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -15,118 +15,189 @@
   <div class="progress" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="logo" href="#top" aria-label="Design by Lucas">
-      <small>DESIGN BY</small><b>Lucas</b>
-    </a>
-    <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    <a class="logo" href="#top" aria-label="Design by Lucas, home"><span>Design by</span><b>Lucas</b></a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
     <nav id="menu" class="menu" aria-label="Main">
       <a href="#work">Work</a>
-      <a href="#what">What I do</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a class="menu-cta" href="#contact">Book a call</a>
+      <a href="#what">Services</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-acc menu-cta" href="#contact">Start a project</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <p class="label">Design</p>
-      <h1>Your business.<br>Upgraded.</h1>
-      <p class="sub">Websites, bookings, automation &amp; AI.<br>Built to look good. Made to work harder.</p>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="chip"><i></i>Taking on new projects</p>
+        <h1>Your business.<br><em>Upgraded.</em></h1>
+        <p class="lead">Websites, online booking, automation and AI for local businesses in Sherwood Park and Edmonton. Built to look good, made to work harder.</p>
+        <div class="actions">
+          <a class="btn btn-ink" href="#contact">Start a project <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5"/></svg></a>
+          <a class="btn btn-ghost" href="#work">See the work</a>
+        </div>
+        <ul class="proof">
+          <li><b>1 person</b> No account managers</li>
+          <li><b>Phone-first</b> Fast on any device</li>
+          <li><b>Flat price</b> Quoted upfront</li>
+        </ul>
+      </div>
 
-      <div class="stack" aria-hidden="true">
-        <div class="card salon">
-          <div class="salon-nav"><span>STUDIO / SOLA</span><em>Book</em></div>
-          <h3>Good hair.<br>Better energy.</h3>
-          <p>Modern hair for modern humans.</p>
-          <span class="pill-dark">Book a chair →</span>
+      <div class="demo">
+        <p class="demo-hint"><span></span>Live demo: tap a day and book a slot</p>
+        <div class="book" id="book">
+          <div class="book-top">
+            <div><small>Studio Sola</small><h2>Book an appointment</h2></div>
+            <div class="nav-arrows">
+              <button type="button" id="prev" aria-label="Previous month">‹</button>
+              <button type="button" id="next" aria-label="Next month">›</button>
+            </div>
+          </div>
+          <p class="month" id="month" aria-live="polite"></p>
+          <div class="cal" id="cal" role="group" aria-label="Choose a day"></div>
+          <p class="slots-label" id="slotsLabel"></p>
+          <div class="slots" id="slots" role="group" aria-label="Choose a time"></div>
+          <button class="btn btn-acc confirm" id="confirm" type="button" disabled>Pick a time</button>
+          <div class="done" id="done" hidden>
+            <div class="tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+            <h3>You're booked</h3>
+            <p id="doneText"></p>
+            <button class="again" type="button" id="again">Book another</button>
+          </div>
         </div>
-        <div class="card cal">
-          <h4>Book an appointment</h4>
-          <div class="cal-head"><span>‹</span><b>October 2026</b><span>›</span></div>
-          <div class="cal-grid" id="cal"></div>
-          <div class="slots"><span>09:00</span><span>10:30</span><span>12:00</span><span>13:30</span><span class="off">15:00</span><span>16:30</span></div>
-        </div>
-        <span class="tag">Built by Lucas</span>
-        <div class="card flow">
-          <h4>Automated workflow <span class="live"><i></i>LIVE</span></h4>
+
+        <div class="flow" id="flow">
+          <p class="flow-title">What happens next, automatically <span class="live"><i></i>Live</span></p>
           <ol>
-            <li><i>📅</i><b>New booking</b><small>Customer books online</small></li>
-            <li><i>✉️</i><b>Confirmation</b><small>Email &amp; calendar invite</small></li>
-            <li><i>✦</i><b>Follow-up</b><small>Reminder + thank-you</small></li>
+            <li data-step="0"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span><b>New booking</b><small>Saved to your calendar</small></li>
+            <li data-step="1"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 8l8 5 8-5"/></svg></span><b>Confirmation</b><small>Email sent to the client</small></li>
+            <li data-step="2"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></span><b>Reminder</b><small>Text the day before</small></li>
           </ol>
         </div>
       </div>
     </section>
 
     <div class="marquee" aria-hidden="true">
-      <div><span>WEBSITES</span><span>BOOKINGS</span><span>AUTOMATION</span><span>AI</span><span>SYSTEMS</span><span>WEBSITES</span><span>BOOKINGS</span><span>AUTOMATION</span><span>AI</span><span>SYSTEMS</span></div>
+      <div><span>Websites</span><span>Bookings</span><span>Automation</span><span>AI helpers</span><span>Local SEO</span><span>Websites</span><span>Bookings</span><span>Automation</span><span>AI helpers</span><span>Local SEO</span></div>
     </div>
 
-    <section class="work" id="work">
-      <p class="label">Work</p>
-      <h2>Small business.<br>Big main-character energy.</h2>
+    <section class="work wrap" id="work">
+      <div class="head">
+        <p class="label">Work</p>
+        <h2>Small business.<br>Big main-character energy.</h2>
+        <p class="note">Concept projects built to show what your site could look like. Tap one to open it.</p>
+      </div>
 
-      <p class="label sm">Concept projects</p>
-      <!-- Each card links to a sample already in this repo -->
-      <a class="proj" href="../samples/barbershop/index.html">
-        <div class="shot s-barber"><b>FADE &amp; CO.</b><h3>Sharp cuts.<br>Zero wait.</h3><span class="pill-lime">Book a cut →</span></div>
-        <div class="proj-meta"><h3>Barbershop</h3><span>→</span></div><p>Website / Booking</p>
-      </a>
-      <a class="proj" href="../samples/hvac/index.html">
-        <div class="shot s-hvac"><b>OTTO HEATING &amp; COOLING</b><h3>Heat when it's -30.<br>Cool when it's not.</h3><span class="pill-lime">Call now →</span></div>
-        <div class="proj-meta"><h3>Otto Heating &amp; Cooling</h3><span>→</span></div><p>Website / Quotes</p>
-      </a>
-      <a class="proj" href="../woodland-mushrooms/index.html">
-        <div class="shot s-wood"><b>WOODLAND MUSHROOMS</b><h3>Grown slow.<br>Picked fresh.</h3><span class="pill-lime">Get in touch →</span></div>
-        <div class="proj-meta"><h3>Woodland Mushrooms</h3><span>→</span></div><p>Website / Contact form</p>
-      </a>
+      <div class="grid3">
+        <a class="proj" href="../samples/barbershop/index.html">
+          <div class="frame f-barber">
+            <div class="bar"><i></i><i></i><i></i><span>fadeandco.ca</span></div>
+            <div class="scr"><div class="mini-nav"><b>FADE &amp; CO.</b><span>Book</span></div><h3>Sharp cuts.<br>Zero wait.</h3><span class="mini-btn">Book a cut</span><div class="mini-row"><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="meta"><h3>Fade &amp; Co.</h3><span class="tags">Website · Booking</span></div>
+        </a>
+        <a class="proj" href="../samples/hvac/index.html">
+          <div class="frame f-hvac">
+            <div class="bar"><i></i><i></i><i></i><span>ottohvac.ca</span></div>
+            <div class="scr"><div class="mini-nav"><b>OTTO HVAC</b><span>Call</span></div><h3>Heat when it's -30.<br>Cool when it's not.</h3><span class="mini-btn">Get a free quote</span><div class="mini-row"><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="meta"><h3>Otto Heating &amp; Cooling</h3><span class="tags">Website · Quotes</span></div>
+        </a>
+        <a class="proj" href="../woodland-mushrooms/index.html">
+          <div class="frame f-wood">
+            <div class="bar"><i></i><i></i><i></i><span>woodlandmushrooms.ca</span></div>
+            <div class="scr"><div class="mini-nav"><b>WOODLAND</b><span>Order</span></div><h3>Grown slow.<br>Picked fresh.</h3><span class="mini-btn">Get in touch</span><div class="mini-row"><i></i><i></i><i></i></div></div>
+          </div>
+          <div class="meta"><h3>Woodland Mushrooms</h3><span class="tags">Website · Contact form</span></div>
+        </a>
+      </div>
     </section>
 
     <section class="what" id="what">
-      <p class="label">What I do</p>
-      <ul>
-        <li><span>01</span><div><h3>Websites</h3><p>Fast, mobile-first and built to be found on Google.</p></div></li>
-        <li><span>02</span><div><h3>Online booking</h3><p>Live availability, confirmations and reminders that send themselves.</p></div></li>
-        <li><span>03</span><div><h3>Automation</h3><p>Enquiry comes in, follow-up goes out. No more copy-pasting between apps.</p></div></li>
-        <li><span>04</span><div><h3>AI helpers</h3><p>Answer common questions, sort enquiries and draft replies while you work.</p></div></li>
-      </ul>
+      <div class="wrap">
+        <div class="head">
+          <p class="label">Services</p>
+          <h2>Everything your business needs online.</h2>
+        </div>
+        <div class="grid4">
+          <article class="svc">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/></svg></span>
+            <h3>Websites</h3>
+            <p>Fast, clear and built for phones first. Set up so people can find you on Google.</p>
+          </article>
+          <article class="svc">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span>
+            <h3>Online booking</h3>
+            <p>Clients pick a time that is actually free. No double bookings and no back-and-forth texts.</p>
+          </article>
+          <article class="svc">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></span>
+            <h3>Automation</h3>
+            <p>Enquiry comes in, confirmation and follow-up go out. The busywork runs itself.</p>
+          </article>
+          <article class="svc">
+            <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></span>
+            <h3>AI helpers</h3>
+            <p>Answer common questions and sort enquiries while you are busy with real work.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="about" id="about">
-      <p class="label">About</p>
-      <h2>One person.<br>No middlemen.</h2>
-      <p>I'm Lucas, a web designer based in Sherwood Park, serving Edmonton and area. You talk to me, I build it, and I tell you honestly what will and won't help your business.</p>
-      <ul class="facts">
-        <li><b>Flat</b> pricing, quoted upfront</li>
-        <li><b>Phone-first</b> design</li>
-        <li><b>You own</b> your site</li>
-      </ul>
+    <section class="process wrap" id="process">
+      <div class="head">
+        <p class="label">Process</p>
+        <h2>From hello to live in about two weeks.</h2>
+      </div>
+      <ol class="steps">
+        <li><span>1</span><h3>We talk</h3><p>A free 15-minute call. You tell me what is slowing your business down.</p></li>
+        <li><span>2</span><h3>I build</h3><p>You see a working version fast and tell me what to change.</p></li>
+        <li><span>3</span><h3>You launch</h3><p>Your site goes live and I stick around to fix and tweak. You own everything.</p></li>
+      </ol>
+    </section>
+
+    <section class="faq wrap" id="faq">
+      <div class="head">
+        <p class="label">FAQ</p>
+        <h2>Questions people ask.</h2>
+      </div>
+      <div class="qa">
+        <details><summary>How much does a website cost?</summary><p>Every project is quoted as a flat price after our first call, so there are no surprise invoices. Tell me what you need and I'll send a number.</p></details>
+        <details><summary>Do I need to know anything technical?</summary><p>No. I handle the build, hosting setup and launch. You just tell me about your business.</p></details>
+        <details><summary>Will it work on phones?</summary><p>Yes. Most customers look on their phone, so every site is designed for phones first.</p></details>
+        <details><summary>Who owns the site?</summary><p>You do. If you ever want to move on, everything goes with you.</p></details>
+        <details><summary>Do you work outside Edmonton?</summary><p>Mostly Sherwood Park and Edmonton, but calls and email work from anywhere, so ask.</p></details>
+      </div>
     </section>
 
     <section class="cta" id="contact">
-      <span class="spark" aria-hidden="true"></span>
-      <h2>Let's build<br>something cool.</h2>
-      <p>Tell me what's slowing your business down. I'll tell you, honestly, how I'd fix it.</p>
-      <form class="form" novalidate action="https://api.web3forms.com/submit" method="post">
-        <input type="hidden" name="access_key" value="d33f40a4-aea6-4092-a17c-defc3d2beab8">
-        <input type="hidden" name="subject" value="New enquiry from Design by Lucas">
-        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
-        <label>Name <input name="name" autocomplete="name"></label>
-        <label>Email <input type="email" name="email" autocomplete="email"></label>
-        <label>Phone <input type="tel" name="phone" autocomplete="tel"></label>
-        <label>What do you need? <textarea name="message" rows="3"></textarea></label>
-        <button class="btn-dark" type="submit">Start a project →</button>
-        <p class="status" role="status" aria-live="polite"></p>
-      </form>
-      <p class="direct"><a href="mailto:designsbylucas1@gmail.com">designsbylucas1@gmail.com</a></p>
+      <div class="wrap cta-in">
+        <div>
+          <h2>Let's build something cool.</h2>
+          <p>Tell me what is slowing your business down. I'll tell you, honestly, how I'd fix it.</p>
+          <p class="direct"><a href="mailto:designsbylucas1@gmail.com">designsbylucas1@gmail.com</a></p>
+        </div>
+        <form class="form" novalidate action="https://api.web3forms.com/submit" method="post">
+          <input type="hidden" name="access_key" value="d33f40a4-aea6-4092-a17c-defc3d2beab8">
+          <input type="hidden" name="subject" value="New enquiry from Design by Lucas">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name"></label>
+          <label for="f-email">Email<input id="f-email" type="email" name="email" autocomplete="email"></label>
+          <label for="f-phone">Phone<input id="f-phone" type="tel" name="phone" autocomplete="tel"></label>
+          <label for="f-msg">What do you need?<textarea id="f-msg" name="message" rows="3"></textarea></label>
+          <button class="btn btn-ink" type="submit">Send enquiry <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10.5 5l5 5-5 5"/></svg></button>
+          <p class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="logo"><small>DESIGN BY</small><b>Lucas</b></div>
-    <nav><a href="#work">Work</a><a href="#what">What I do</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-    <p>© 2026 Design by Lucas · Sherwood Park &amp; Edmonton</p>
+    <div class="wrap foot-in">
+      <a class="logo" href="#top"><span>Design by</span><b>Lucas</b></a>
+      <nav aria-label="Footer"><a href="#work">Work</a><a href="#what">Services</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+      <p>© 2026 Design by Lucas · Sherwood Park &amp; Edmonton</p>
+    </div>
   </footer>
 </body>
 </html>
